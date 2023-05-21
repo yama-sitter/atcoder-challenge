@@ -1,4 +1,4 @@
-const { main } = require("./002");
+import { main } from "./002";
 
 const logSpy = jest.spyOn(console, "log");
 
