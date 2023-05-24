@@ -1,5 +1,5 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
+const base = require("../jest.config.js");
+
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+	...base,
 };
