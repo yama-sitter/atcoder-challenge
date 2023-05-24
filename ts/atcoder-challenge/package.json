@@ -2,9 +2,7 @@
   "name": "atcoder-challenge",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "ssh://git@github.com/yama-sitter/atcoder-challenge.git",
   "author": "yama-sitter <dadayamism@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
