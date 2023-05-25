@@ -15,7 +15,7 @@ export function selectionSort(arr: number[]) {
 			minIndex = _arr[j] < _arr[minIndex] ? j : minIndex;
 		}
 
-		// 交換対象と最小値を交換する
+    // 交換対象と最小値を交換する
 		const tmp = _arr[i];
 		_arr[i] = _arr[minIndex];
 		_arr[minIndex] = tmp;
