@@ -1,9 +1,11 @@
+import { swap } from "./swap";
+
 // 1. 1番目の値から最後の値までの中の最小値を見つけ出す
 // 2. 最小値を1番目の要素と交換する
 // 3. 1で交換した最小値を確定する
 // 4. 2番目以降にも1~3を繰り返し、未確定が残り1つになったら終了
 export function selectionSort(arr: number[]) {
-	const _arr = arr.slice();
+	let _arr = arr.slice();
 	const len = arr.length;
 
 	// 未確定が1つになったら終了するため、len - 1まででOK
@@ -15,10 +17,8 @@ export function selectionSort(arr: number[]) {
 			minIndex = _arr[j] < _arr[minIndex] ? j : minIndex;
 		}
 
-    // 交換対象と最小値を交換する
-		const tmp = _arr[i];
-		_arr[i] = _arr[minIndex];
-		_arr[minIndex] = tmp;
+		// 交換対象と最小値を交換する
+		_arr = swap(_arr, i, minIndex);
 	}
 
 	return _arr;

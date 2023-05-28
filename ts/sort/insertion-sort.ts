@@ -9,7 +9,7 @@ export function insertionSort(arr: number[]) {
 	// 配列の0番目は「整列されている」という前提で走査するため、i = 1から開始
 	for (let i = 1; i < _arr.length; i++) {
 		// 未整列部分から値を取り出す
-		let tmp = _arr[i];
+		const tmp = _arr[i];
 
 		// 整列部分の最終インデックス
 		let j = i - 1;
