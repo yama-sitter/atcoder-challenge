@@ -47,7 +47,7 @@ export class BinarySearchTree {
 		}
 	}
 
-	toArrayInOrder(node: Node | null = this.rootNode): (number | undefined)[] {
+	toArrayInOrder(node: Node | null = this.rootNode): number[] {
 		if (node === null) return [];
 
 		return [
