@@ -28,7 +28,7 @@ export class BinarySearchTree {
 			return;
 		}
 
-		let current: Node = this._rootNode;
+		let current = this._rootNode;
 
 		while (true) {
 			if (value < current.value) {
@@ -45,5 +45,15 @@ export class BinarySearchTree {
 				current = current.right;
 			}
 		}
+	}
+
+	toArrayInOrder(node: Node | null = this.rootNode): (number | undefined)[] {
+		if (node === null) return [];
+
+		return [
+			...this.toArrayInOrder(node.left),
+			node.value,
+			...this.toArrayInOrder(node.right),
+		];
 	}
 }
