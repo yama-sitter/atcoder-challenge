@@ -79,7 +79,7 @@ export class BinarySearchTree {
 			// 子ノードの最小値を探し、値を入れ替える
 			const min = this.#findMin(node.right);
 			node.value = min.value;
-			// 子ノードの最小値を削除する
+			// 子ノードの最小値（= 右の部分木の最小値 = 右の部分木の左を辿った末端）を削除する
 			node.right = this.#deleteRecursive(min.value, node.right);
 		}
 
@@ -93,7 +93,6 @@ export class BinarySearchTree {
 		return node;
 	}
 
-	// ツリーの最小値 = 左の部分木の末端を探す
 	#findMin(node: Node): Node {
 		return node.left === null ? node : this.#findMin(node.left);
 	}
