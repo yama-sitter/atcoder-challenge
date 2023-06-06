@@ -21,22 +21,22 @@ export class BinarySearchTree {
 			return;
 		}
 
-		let current = this._rootNode;
+		this.#insertRecursive(value, this._rootNode);
+	}
 
-		while (true) {
-			if (value < current.value) {
-				if (current.left === null) {
-					current.left = new Node(value);
-					return;
-				}
-				current = current.left;
-			} else {
-				if (current.right === null) {
-					current.right = new Node(value);
-					return;
-				}
-				current = current.right;
+	#insertRecursive(value: number, node: Node) {
+		if (value < node.value) {
+			if (node.left === null) {
+				node.left = new Node(value);
+				return;
 			}
+			this.#insertRecursive(value, node.left);
+		} else {
+			if (node.right === null) {
+				node.right = new Node(value);
+				return;
+			}
+			this.#insertRecursive(value, node.right);
 		}
 	}
 

@@ -71,7 +71,7 @@ describe("BinarySearchTree", () => {
 			expect(tree.rootNode?.left?.left?.value).toStrictEqual(1);
 		});
 
-		test("succeeds in deleting a node that has two child nodes ", () => {
+		test("succeeds in deleting a node that has two child nodes", () => {
 			expect(tree.rootNode?.right?.value).toStrictEqual(34);
 			expect(tree.rootNode?.right?.left?.value).toStrictEqual(21);
 			expect(tree.rootNode?.right?.right?.value).toStrictEqual(55);
@@ -83,7 +83,7 @@ describe("BinarySearchTree", () => {
 			expect(tree.rootNode?.right?.right).toStrictEqual(null);
 		});
 
-		test("succeeds in deleting a node that has two child nodes ", () => {
+		test("succeeds in deleting the root node", () => {
 			expect(tree.rootNode?.value).toStrictEqual(13);
 			expect(tree.rootNode?.left?.value).toStrictEqual(3);
 			expect(tree.rootNode?.right?.value).toStrictEqual(34);
