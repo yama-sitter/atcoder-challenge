@@ -1,3 +1,5 @@
+import { swap } from "./swap";
+
 export class MinHeap {
 	private constructor(private arr: number[]) {}
 
@@ -52,11 +54,11 @@ export class MinHeap {
 	#toSortedArrayRecursive(arr: number[], sorted: number[] = []): number[] {
 		if (arr.length === 0) return sorted;
 
-		const _arr = arr.slice();
-		sorted.push(_arr.shift() as number);
+		const _arr = swap(arr.slice(), 0, arr.length - 1);
+		sorted.push(_arr.pop() as number);
 
-		const heaped = MinHeap.heapify(_arr);
-		return this.#toSortedArrayRecursive(heaped, sorted);
+		const heapedOnlyFirst = MinHeap.#heapifyRecursive(_arr, 0);
+		return this.#toSortedArrayRecursive(heapedOnlyFirst, sorted);
 	}
 
 	verify() {
