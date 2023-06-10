@@ -2,15 +2,19 @@ export class MinHeap {
 	private constructor(private arr: number[]) {}
 
 	static create(arr: number[]) {
-		// 子ノードを持つのはノード総数の半分（切り下げ）のため、処理する回数はlength / 2でOK
-		const heaped = [...Array(Math.floor(arr.length / 2))]
-			.map((_, i) => i)
-			.reverse()
-			.reduce((_arr, index) => MinHeap.#heapify(_arr, index), arr);
+		const heaped = MinHeap.heapify(arr);
 		return new MinHeap(heaped);
 	}
 
-	static #heapify(arr: number[], parentIndex: number): number[] {
+	static heapify(arr: number[]) {
+		// 子ノードを持つのはノード総数の半分（切り下げ）のため、処理する回数はlength / 2でOK
+		return [...Array(Math.floor(arr.length / 2))]
+			.map((_, i) => i)
+			.reverse()
+			.reduce((_arr, index) => MinHeap.#heapifyRecursive(_arr, index), arr);
+	}
+
+	static #heapifyRecursive(arr: number[], parentIndex: number): number[] {
 		const _arr = arr.slice();
 
 		// 配列構造の完全二分木において、子ノードを指すインデックス
@@ -31,7 +35,7 @@ export class MinHeap {
 		// スワップすると元々子ノードの値が入っていた場所に親ノードの値が入って孫ノードとの整合性が取れなくなる可能性があるため、再帰的に処理する
 		if (min !== parentIndex) {
 			[_arr[parentIndex], _arr[min]] = [_arr[min], _arr[parentIndex]];
-			return MinHeap.#heapify(_arr, min);
+			return MinHeap.#heapifyRecursive(_arr, min);
 		}
 
 		return _arr;
@@ -39,6 +43,20 @@ export class MinHeap {
 
 	toArray() {
 		return this.arr;
+	}
+
+	toSortedArray() {
+		return this.#toSortedArrayRecursive(this.arr);
+	}
+
+	#toSortedArrayRecursive(arr: number[], sorted: number[] = []): number[] {
+		if (arr.length === 0) return sorted;
+
+		const _arr = arr.slice();
+		sorted.push(_arr.shift() as number);
+
+		const heaped = MinHeap.heapify(_arr);
+		return this.#toSortedArrayRecursive(heaped, sorted);
 	}
 
 	verify() {
